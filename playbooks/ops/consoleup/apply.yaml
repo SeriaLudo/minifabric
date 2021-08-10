@@ -35,7 +35,8 @@
 - name: Start configtxlator
   command: >-
     docker run -d --network {{ NETNAME }} --name configtxlator.{{ NETNAME }} --hostname configtxlator.{{ NETNAME }}
-    hyperledger/fabric-tools:{{ IMAGETAG }} 
+    -p {{ txlator_port }}:7059
+    hyperledger/fabric-tools:{{ IMAGETAG }}
     /bin/bash -c "/usr/local/bin/configtxlator start --CORS=*"
 
 - name: Get current org ca name
@@ -75,6 +76,7 @@
   - "{{ {'dir':'assets/Ordering_Services', 'state':'directory'} }}"
   - "{{ {'dir':'assets/Organizations', 'state':'directory'} }}"
   - "{{ {'dir':'assets/Peers', 'state':'directory'} }}"
+  - "{{ {'dir':'assets/Wallets', 'state':'directory'} }}"
 
 - name: Setup the starting web port
   set_fact:
@@ -130,6 +132,12 @@
   template:
     src: "{{ pjroot }}/playbooks/ops/consoleup/templates/msp.j2"
     dest: "{{ pjroot }}/vars/console/assets/Organizations/{{ item }}.json"
+  with_items: "{{ allorgs }}"
+
+- name: Generate wallets for each Admin
+  template:
+    src: "{{ pjroot }}/playbooks/ops/consoleup/templates/wallet.j2"
+    dest: "{{ pjroot }}/vars/console/assets/Wallets/Admin-{{ item }}.json"
   with_items: "{{ allorgs }}"
 
 - name: Package all the assets to one file

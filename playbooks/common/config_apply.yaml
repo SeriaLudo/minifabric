@@ -158,6 +158,7 @@
       explorer_port: "{{ nodeport|int + 1 }}"
       portainer_port: "{{ nodeport|int + 2 }}"
       console_port: "{{ nodeport|int + 3 }}"
+      txlator_port: "{{ nodeport|int + 4 }}"
 
   - name: Produce the node env file
     copy:
@@ -165,6 +166,6 @@
       content: >-
         {{ {'allcas': allcas, 'allpeers': allpeers, 'allorderers': allorderers, 'explorer_port': explorer_port,
             'portainer_port': portainer_port, 'allcouchdbs': allcouchdbs|default([]),
-            'console_port': console_port,
+            'console_port': console_port, 'txlator_port': txlator_port,
             'caorgs': caorgs, 'peerorgs': peerorgs, 'ordererorgs': ordererorgs, 'allorgs': allorgs,
             'orgattrs': orgattrs } | to_nice_json(indent=2) }}
