@@ -35,7 +35,6 @@
 - name: Start configtxlator
   command: >-
     docker run -d --network {{ NETNAME }} --name configtxlator.{{ NETNAME }} --hostname configtxlator.{{ NETNAME }}
-    -p {{ txlator_port }}:7059
     hyperledger/fabric-tools:{{ IMAGETAG }}
     /bin/bash -c "/usr/local/bin/configtxlator start --CORS=*"
 
