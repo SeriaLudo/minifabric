@@ -1,0 +1,38 @@
+{
+  "org1-digiprism-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "192.168.86.33", "port": "7003" },
+           { "host": "192.168.86.33", "port": "7004" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "org2-digiprism-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "192.168.86.33", "port": "7005" },
+           { "host": "192.168.86.33", "port": "7006" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "org3-digiprism-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "192.168.86.33", "port": "7007" },
+           { "host": "192.168.86.33", "port": "7008" }
+        ]
+      },
+      "version": "0"
+    }
+  }
+}

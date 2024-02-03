@@ -1,0 +1,209 @@
+---
+Organizations:
+  - &digiprism-com
+      Name: digiprism-com
+      ID: digiprism-com
+      MSPDir: keyfiles/ordererOrganizations/digiprism.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('digiprism-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('digiprism-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('digiprism-com.admin')"
+  - &org1-digiprism-com
+      Name: org1-digiprism-com
+      ID: org1-digiprism-com
+      MSPDir: keyfiles/peerOrganizations/org1.digiprism.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org1-digiprism-com.admin', 'org1-digiprism-com.peer', 'org1-digiprism-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org1-digiprism-com.admin', 'org1-digiprism-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org1-digiprism-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org1-digiprism-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.86.33
+        Port: 7003
+      - Host: 192.168.86.33
+        Port: 7004
+  - &org2-digiprism-com
+      Name: org2-digiprism-com
+      ID: org2-digiprism-com
+      MSPDir: keyfiles/peerOrganizations/org2.digiprism.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org2-digiprism-com.admin', 'org2-digiprism-com.peer', 'org2-digiprism-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org2-digiprism-com.admin', 'org2-digiprism-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org2-digiprism-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org2-digiprism-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.86.33
+        Port: 7005
+      - Host: 192.168.86.33
+        Port: 7006
+  - &org3-digiprism-com
+      Name: org3-digiprism-com
+      ID: org3-digiprism-com
+      MSPDir: keyfiles/peerOrganizations/org3.digiprism.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org3-digiprism-com.admin', 'org3-digiprism-com.peer', 'org3-digiprism-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org3-digiprism-com.admin', 'org3-digiprism-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org3-digiprism-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org3-digiprism-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.86.33
+        Port: 7007
+      - Host: 192.168.86.33
+        Port: 7008
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - 192.168.86.33:7015
+  - 192.168.86.33:7016
+  - 192.168.86.33:7017
+  EtcdRaft:
+    Consenters:
+    - Host: 192.168.86.33
+      Port: 7015
+      ClientTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer1.digiprism.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer1.digiprism.com/tls/server.crt
+    - Host: 192.168.86.33
+      Port: 7016
+      ClientTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer2.digiprism.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer2.digiprism.com/tls/server.crt
+    - Host: 192.168.86.33
+      Port: 7017
+      ClientTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer3.digiprism.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/digiprism.com/orderers/orderer3.digiprism.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *org1-digiprism-com
+      - *org2-digiprism-com
+      - *org3-digiprism-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *digiprism-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *digiprism-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *org1-digiprism-com
+        - *org2-digiprism-com
+        - *org3-digiprism-com

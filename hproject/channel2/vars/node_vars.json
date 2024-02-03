@@ -1,0 +1,248 @@
+{
+  "allcas": [
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org1.identity.com",
+      "mspid": "org1-identity-com",
+      "name": "ca1",
+      "org": "org1.identity.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.org1.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org2.identity.com",
+      "mspid": "org2-identity-com",
+      "name": "ca1",
+      "org": "org2.identity.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.org2.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org3.identity.com",
+      "mspid": "org3-identity-com",
+      "name": "ca1",
+      "org": "org3.identity.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.org3.identity.com"
+    }
+  ],
+  "allcouchdbs": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org1.identity.com.couchdb",
+      "mspid": "org1-identity-com",
+      "name": "peer1.couchdb",
+      "org": "org1.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer1.org1.identity.com.couchdb"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org1.identity.com.couchdb",
+      "mspid": "org1-identity-com",
+      "name": "peer2.couchdb",
+      "org": "org1.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer2.org1.identity.com.couchdb"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org2.identity.com.couchdb",
+      "mspid": "org2-identity-com",
+      "name": "peer1.couchdb",
+      "org": "org2.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer1.org2.identity.com.couchdb"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org2.identity.com.couchdb",
+      "mspid": "org2-identity-com",
+      "name": "peer2.couchdb",
+      "org": "org2.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer2.org2.identity.com.couchdb"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org3.identity.com.couchdb",
+      "mspid": "org3-identity-com",
+      "name": "peer1.couchdb",
+      "org": "org3.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer1.org3.identity.com.couchdb"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org3.identity.com.couchdb",
+      "mspid": "org3-identity-com",
+      "name": "peer2.couchdb",
+      "org": "org3.identity.com",
+      "port": "5984",
+      "portmap": "",
+      "type": "couchdb",
+      "url": "peer2.org3.identity.com.couchdb"
+    }
+  ],
+  "allorderers": [
+    {
+      "fullname": "orderer1.identity.com",
+      "mspid": "identity-com",
+      "name": "orderer1",
+      "org": "identity.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer1.identity.com"
+    },
+    {
+      "fullname": "orderer2.identity.com",
+      "mspid": "identity-com",
+      "name": "orderer2",
+      "org": "identity.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer2.identity.com"
+    },
+    {
+      "fullname": "orderer3.identity.com",
+      "mspid": "identity-com",
+      "name": "orderer3",
+      "org": "identity.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer3.identity.com"
+    }
+  ],
+  "allorgs": [
+    "identity.com",
+    "org1.identity.com",
+    "org2.identity.com",
+    "org3.identity.com"
+  ],
+  "allpeers": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org1.identity.com",
+      "mspid": "org1-identity-com",
+      "name": "peer1",
+      "org": "org1.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.org1.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org1.identity.com",
+      "mspid": "org1-identity-com",
+      "name": "peer2",
+      "org": "org1.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer2.org1.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org2.identity.com",
+      "mspid": "org2-identity-com",
+      "name": "peer1",
+      "org": "org2.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.org2.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org2.identity.com",
+      "mspid": "org2-identity-com",
+      "name": "peer2",
+      "org": "org2.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer2.org2.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org3.identity.com",
+      "mspid": "org3-identity-com",
+      "name": "peer1",
+      "org": "org3.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.org3.identity.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org3.identity.com",
+      "mspid": "org3-identity-com",
+      "name": "peer2",
+      "org": "org3.identity.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer2.org3.identity.com"
+    }
+  ],
+  "caorgs": [
+    "org1.identity.com",
+    "org2.identity.com",
+    "org3.identity.com"
+  ],
+  "console_port": "7203",
+  "explorer_port": "7201",
+  "ordererorgs": [
+    "identity.com"
+  ],
+  "orgattrs": {
+    "identity.com": {
+      "certpath": "ordererOrganizations",
+      "mspid": "identity-com"
+    },
+    "org1.identity.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org1-identity-com"
+    },
+    "org2.identity.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org2-identity-com"
+    },
+    "org3.identity.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org3-identity-com"
+    }
+  },
+  "peerorgs": [
+    "org1.identity.com",
+    "org2.identity.com",
+    "org3.identity.com"
+  ],
+  "portainer_port": "7202"
+}

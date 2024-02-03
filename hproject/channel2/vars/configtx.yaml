@@ -1,0 +1,209 @@
+---
+Organizations:
+  - &identity-com
+      Name: identity-com
+      ID: identity-com
+      MSPDir: keyfiles/ordererOrganizations/identity.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('identity-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('identity-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('identity-com.admin')"
+  - &org1-identity-com
+      Name: org1-identity-com
+      ID: org1-identity-com
+      MSPDir: keyfiles/peerOrganizations/org1.identity.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org1-identity-com.admin', 'org1-identity-com.peer', 'org1-identity-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org1-identity-com.admin', 'org1-identity-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org1-identity-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org1-identity-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.org1.identity.com
+        Port: 7051
+      - Host: peer2.org1.identity.com
+        Port: 7051
+  - &org2-identity-com
+      Name: org2-identity-com
+      ID: org2-identity-com
+      MSPDir: keyfiles/peerOrganizations/org2.identity.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org2-identity-com.admin', 'org2-identity-com.peer', 'org2-identity-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org2-identity-com.admin', 'org2-identity-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org2-identity-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org2-identity-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.org2.identity.com
+        Port: 7051
+      - Host: peer2.org2.identity.com
+        Port: 7051
+  - &org3-identity-com
+      Name: org3-identity-com
+      ID: org3-identity-com
+      MSPDir: keyfiles/peerOrganizations/org3.identity.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('org3-identity-com.admin', 'org3-identity-com.peer', 'org3-identity-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('org3-identity-com.admin', 'org3-identity-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('org3-identity-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('org3-identity-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.org3.identity.com
+        Port: 7051
+      - Host: peer2.org3.identity.com
+        Port: 7051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - orderer1.identity.com:7050
+  - orderer2.identity.com:7050
+  - orderer3.identity.com:7050
+  EtcdRaft:
+    Consenters:
+    - Host: orderer1.identity.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer1.identity.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer1.identity.com/tls/server.crt
+    - Host: orderer2.identity.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer2.identity.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer2.identity.com/tls/server.crt
+    - Host: orderer3.identity.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer3.identity.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/identity.com/orderers/orderer3.identity.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *org1-identity-com
+      - *org2-identity-com
+      - *org3-identity-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *identity-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *identity-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *org1-identity-com
+        - *org2-identity-com
+        - *org3-identity-com

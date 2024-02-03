@@ -1,0 +1,149 @@
+{
+  "Admin@identity.com": {
+    "key": "Admin@identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/users/Admin@identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/users/Admin@identity.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org1.identity.com": {
+    "key": "Admin@org1.identity.com",
+    "org": "org1.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.identity.com/users/Admin@org1.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.identity.com/users/Admin@org1.identity.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org2.identity.com": {
+    "key": "Admin@org2.identity.com",
+    "org": "org2.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.identity.com/users/Admin@org2.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.identity.com/users/Admin@org2.identity.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org3.identity.com": {
+    "key": "Admin@org3.identity.com",
+    "org": "org3.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.identity.com/users/Admin@org3.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.identity.com/users/Admin@org3.identity.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "identity.com": {
+    "key": "identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/ca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "identity.com.tlsca": {
+    "key": "identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/tlsca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "orderer1.identity.com": {
+    "key": "orderer1.identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/orderers/orderer1.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/orderers/orderer1.identity.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer2.identity.com": {
+    "key": "orderer2.identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/orderers/orderer2.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/orderers/orderer2.identity.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer3.identity.com": {
+    "key": "orderer3.identity.com",
+    "org": "identity.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/identity.com/orderers/orderer3.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/identity.com/orderers/orderer3.identity.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "org1.identity.com": {
+    "key": "org1.identity.com",
+    "org": "org1.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.identity.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.identity.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org1.identity.com.tlsca": {
+    "key": "org1.identity.com",
+    "org": "org1.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.identity.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.identity.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "org2.identity.com": {
+    "key": "org2.identity.com",
+    "org": "org2.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.identity.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.identity.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org2.identity.com.tlsca": {
+    "key": "org2.identity.com",
+    "org": "org2.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.identity.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.identity.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "org3.identity.com": {
+    "key": "org3.identity.com",
+    "org": "org3.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.identity.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.identity.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org3.identity.com.tlsca": {
+    "key": "org3.identity.com",
+    "org": "org3.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.identity.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.identity.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "peer1.org1.identity.com": {
+    "key": "peer1.org1.identity.com",
+    "org": "org1.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.identity.com/peers/peer1.org1.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.identity.com/peers/peer1.org1.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.org2.identity.com": {
+    "key": "peer1.org2.identity.com",
+    "org": "org2.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.identity.com/peers/peer1.org2.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.identity.com/peers/peer1.org2.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.org3.identity.com": {
+    "key": "peer1.org3.identity.com",
+    "org": "org3.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.identity.com/peers/peer1.org3.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.identity.com/peers/peer1.org3.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org1.identity.com": {
+    "key": "peer2.org1.identity.com",
+    "org": "org1.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.identity.com/peers/peer2.org1.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.identity.com/peers/peer2.org1.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org2.identity.com": {
+    "key": "peer2.org2.identity.com",
+    "org": "org2.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.identity.com/peers/peer2.org2.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.identity.com/peers/peer2.org2.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org3.identity.com": {
+    "key": "peer2.org3.identity.com",
+    "org": "org3.identity.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.identity.com/peers/peer2.org3.identity.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.identity.com/peers/peer2.org3.identity.com/msp/keystore/priv_sk",
+    "type": "peers"
+  }
+}

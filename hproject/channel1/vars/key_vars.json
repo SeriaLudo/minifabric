@@ -1,0 +1,149 @@
+{
+  "Admin@digiprism.com": {
+    "key": "Admin@digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/users/Admin@digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/users/Admin@digiprism.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org1.digiprism.com": {
+    "key": "Admin@org1.digiprism.com",
+    "org": "org1.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.digiprism.com/users/Admin@org1.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.digiprism.com/users/Admin@org1.digiprism.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org2.digiprism.com": {
+    "key": "Admin@org2.digiprism.com",
+    "org": "org2.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.digiprism.com/users/Admin@org2.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.digiprism.com/users/Admin@org2.digiprism.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@org3.digiprism.com": {
+    "key": "Admin@org3.digiprism.com",
+    "org": "org3.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.digiprism.com/users/Admin@org3.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.digiprism.com/users/Admin@org3.digiprism.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "digiprism.com": {
+    "key": "digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/ca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "digiprism.com.tlsca": {
+    "key": "digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/tlsca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "orderer1.digiprism.com": {
+    "key": "orderer1.digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/orderers/orderer1.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/orderers/orderer1.digiprism.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer2.digiprism.com": {
+    "key": "orderer2.digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/orderers/orderer2.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/orderers/orderer2.digiprism.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer3.digiprism.com": {
+    "key": "orderer3.digiprism.com",
+    "org": "digiprism.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/digiprism.com/orderers/orderer3.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/digiprism.com/orderers/orderer3.digiprism.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "org1.digiprism.com": {
+    "key": "org1.digiprism.com",
+    "org": "org1.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.digiprism.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.digiprism.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org1.digiprism.com.tlsca": {
+    "key": "org1.digiprism.com",
+    "org": "org1.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.digiprism.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.digiprism.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "org2.digiprism.com": {
+    "key": "org2.digiprism.com",
+    "org": "org2.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.digiprism.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.digiprism.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org2.digiprism.com.tlsca": {
+    "key": "org2.digiprism.com",
+    "org": "org2.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.digiprism.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.digiprism.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "org3.digiprism.com": {
+    "key": "org3.digiprism.com",
+    "org": "org3.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.digiprism.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.digiprism.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "org3.digiprism.com.tlsca": {
+    "key": "org3.digiprism.com",
+    "org": "org3.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.digiprism.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.digiprism.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "peer1.org1.digiprism.com": {
+    "key": "peer1.org1.digiprism.com",
+    "org": "org1.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.digiprism.com/peers/peer1.org1.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.digiprism.com/peers/peer1.org1.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.org2.digiprism.com": {
+    "key": "peer1.org2.digiprism.com",
+    "org": "org2.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.digiprism.com/peers/peer1.org2.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.digiprism.com/peers/peer1.org2.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.org3.digiprism.com": {
+    "key": "peer1.org3.digiprism.com",
+    "org": "org3.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.digiprism.com/peers/peer1.org3.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.digiprism.com/peers/peer1.org3.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org1.digiprism.com": {
+    "key": "peer2.org1.digiprism.com",
+    "org": "org1.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org1.digiprism.com/peers/peer2.org1.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org1.digiprism.com/peers/peer2.org1.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org2.digiprism.com": {
+    "key": "peer2.org2.digiprism.com",
+    "org": "org2.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org2.digiprism.com/peers/peer2.org2.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org2.digiprism.com/peers/peer2.org2.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.org3.digiprism.com": {
+    "key": "peer2.org3.digiprism.com",
+    "org": "org3.digiprism.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/org3.digiprism.com/peers/peer2.org3.digiprism.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/org3.digiprism.com/peers/peer2.org3.digiprism.com/msp/keystore/priv_sk",
+    "type": "peers"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "allcas": [
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org1.digiprism.com",
+      "mspid": "org1-digiprism-com",
+      "name": "ca1",
+      "oport": "8000",
+      "org": "org1.digiprism.com",
+      "port": "7000",
+      "portmap": "-p 7000:7054 -p 8000:9443",
+      "type": "ca",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org2.digiprism.com",
+      "mspid": "org2-digiprism-com",
+      "name": "ca1",
+      "oport": "8001",
+      "org": "org2.digiprism.com",
+      "port": "7001",
+      "portmap": "-p 7001:7054 -p 8001:9443",
+      "type": "ca",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.org3.digiprism.com",
+      "mspid": "org3-digiprism-com",
+      "name": "ca1",
+      "oport": "8002",
+      "org": "org3.digiprism.com",
+      "port": "7002",
+      "portmap": "-p 7002:7054 -p 8002:9443",
+      "type": "ca",
+      "url": "192.168.86.33"
+    }
+  ],
+  "allcouchdbs": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org1.digiprism.com.couchdb",
+      "mspid": "org1-digiprism-com",
+      "name": "peer1.couchdb",
+      "org": "org1.digiprism.com",
+      "port": "7009",
+      "portmap": "-p 7009:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org1.digiprism.com.couchdb",
+      "mspid": "org1-digiprism-com",
+      "name": "peer2.couchdb",
+      "org": "org1.digiprism.com",
+      "port": "7010",
+      "portmap": "-p 7010:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org2.digiprism.com.couchdb",
+      "mspid": "org2-digiprism-com",
+      "name": "peer1.couchdb",
+      "org": "org2.digiprism.com",
+      "port": "7011",
+      "portmap": "-p 7011:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org2.digiprism.com.couchdb",
+      "mspid": "org2-digiprism-com",
+      "name": "peer2.couchdb",
+      "org": "org2.digiprism.com",
+      "port": "7012",
+      "portmap": "-p 7012:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org3.digiprism.com.couchdb",
+      "mspid": "org3-digiprism-com",
+      "name": "peer1.couchdb",
+      "org": "org3.digiprism.com",
+      "port": "7013",
+      "portmap": "-p 7013:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org3.digiprism.com.couchdb",
+      "mspid": "org3-digiprism-com",
+      "name": "peer2.couchdb",
+      "org": "org3.digiprism.com",
+      "port": "7014",
+      "portmap": "-p 7014:5984",
+      "type": "couchdb",
+      "url": "192.168.86.33"
+    }
+  ],
+  "allorderers": [
+    {
+      "fullname": "orderer1.digiprism.com",
+      "mspid": "digiprism-com",
+      "name": "orderer1",
+      "oport": "8015",
+      "org": "digiprism.com",
+      "port": "7015",
+      "portmap": "-p 7015:7050 -p 8015:7060",
+      "type": "orderer",
+      "url": "192.168.86.33"
+    },
+    {
+      "fullname": "orderer2.digiprism.com",
+      "mspid": "digiprism-com",
+      "name": "orderer2",
+      "oport": "8016",
+      "org": "digiprism.com",
+      "port": "7016",
+      "portmap": "-p 7016:7050 -p 8016:7060",
+      "type": "orderer",
+      "url": "192.168.86.33"
+    },
+    {
+      "fullname": "orderer3.digiprism.com",
+      "mspid": "digiprism-com",
+      "name": "orderer3",
+      "oport": "8017",
+      "org": "digiprism.com",
+      "port": "7017",
+      "portmap": "-p 7017:7050 -p 8017:7060",
+      "type": "orderer",
+      "url": "192.168.86.33"
+    }
+  ],
+  "allorgs": [
+    "digiprism.com",
+    "org1.digiprism.com",
+    "org2.digiprism.com",
+    "org3.digiprism.com"
+  ],
+  "allpeers": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org1.digiprism.com",
+      "mspid": "org1-digiprism-com",
+      "name": "peer1",
+      "oport": "8003",
+      "org": "org1.digiprism.com",
+      "port": "7003",
+      "portmap": "-p 7003:7051 -p 8003:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org1.digiprism.com",
+      "mspid": "org1-digiprism-com",
+      "name": "peer2",
+      "oport": "8004",
+      "org": "org1.digiprism.com",
+      "port": "7004",
+      "portmap": "-p 7004:7051 -p 8004:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org2.digiprism.com",
+      "mspid": "org2-digiprism-com",
+      "name": "peer1",
+      "oport": "8005",
+      "org": "org2.digiprism.com",
+      "port": "7005",
+      "portmap": "-p 7005:7051 -p 8005:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org2.digiprism.com",
+      "mspid": "org2-digiprism-com",
+      "name": "peer2",
+      "oport": "8006",
+      "org": "org2.digiprism.com",
+      "port": "7006",
+      "portmap": "-p 7006:7051 -p 8006:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.org3.digiprism.com",
+      "mspid": "org3-digiprism-com",
+      "name": "peer1",
+      "oport": "8007",
+      "org": "org3.digiprism.com",
+      "port": "7007",
+      "portmap": "-p 7007:7051 -p 8007:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.org3.digiprism.com",
+      "mspid": "org3-digiprism-com",
+      "name": "peer2",
+      "oport": "8008",
+      "org": "org3.digiprism.com",
+      "port": "7008",
+      "portmap": "-p 7008:7051 -p 8008:7061",
+      "type": "peer",
+      "url": "192.168.86.33"
+    }
+  ],
+  "caorgs": [
+    "org1.digiprism.com",
+    "org2.digiprism.com",
+    "org3.digiprism.com"
+  ],
+  "console_port": "7021",
+  "explorer_port": "7019",
+  "ordererorgs": [
+    "digiprism.com"
+  ],
+  "orgattrs": {
+    "digiprism.com": {
+      "certpath": "ordererOrganizations",
+      "mspid": "digiprism-com"
+    },
+    "org1.digiprism.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org1-digiprism-com"
+    },
+    "org2.digiprism.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org2-digiprism-com"
+    },
+    "org3.digiprism.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "org3-digiprism-com"
+    }
+  },
+  "peerorgs": [
+    "org1.digiprism.com",
+    "org2.digiprism.com",
+    "org3.digiprism.com"
+  ],
+  "portainer_port": "7020"
+}

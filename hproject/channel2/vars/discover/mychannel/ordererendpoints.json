@@ -1,0 +1,18 @@
+{
+  "identity-com": {
+    "endpoint": [
+      {
+        "host": "orderer1.identity.com",
+        "port": 7050
+      },
+      {
+        "host": "orderer2.identity.com",
+        "port": 7050
+      },
+      {
+        "host": "orderer3.identity.com",
+        "port": 7050
+      }
+    ]
+  }
+}

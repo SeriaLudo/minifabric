@@ -1,0 +1,193 @@
+{
+  "name": "fabric-network",
+  "description": "Generated network configuration file",
+  "version": "0.1",
+  "client": {
+    "organization": "org2.identity.com",
+    "credentialStore": {
+      "path": "/tmp/hfc-kvs",
+      "cryptoStore": {
+        "path": "/tmp/hfc-cvs"
+      },
+      "wallet": "wallet-name"
+    }
+  },
+  "organizations": {
+    "identity.com": {
+      "mspid": "identity-com",
+      "orderers": [
+        "orderer1.identity.com",
+        "orderer2.identity.com",
+        "orderer3.identity.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/ordererOrganizations/identity.com/users/Admin@identity.com/msp/signcerts/Admin@identity.com-cert.pem",
+          "private_key": "/keyfiles/ordererOrganizations/identity.com/users/Admin@identity.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "org1.identity.com": {
+      "mspid": "org1-identity-com",
+      "peers": [
+        "peer1.org1.identity.com",
+        "peer2.org1.identity.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/org1.identity.com/users/Admin@org1.identity.com/msp/signcerts/Admin@org1.identity.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/org1.identity.com/users/Admin@org1.identity.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "org2.identity.com": {
+      "mspid": "org2-identity-com",
+      "peers": [
+        "peer1.org2.identity.com",
+        "peer2.org2.identity.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/org2.identity.com/users/Admin@org2.identity.com/msp/signcerts/Admin@org2.identity.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/org2.identity.com/users/Admin@org2.identity.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "org3.identity.com": {
+      "mspid": "org3-identity-com",
+      "peers": [
+        "peer1.org3.identity.com",
+        "peer2.org3.identity.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/org3.identity.com/users/Admin@org3.identity.com/msp/signcerts/Admin@org3.identity.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/org3.identity.com/users/Admin@org3.identity.com/msp/keystore/priv_sk"
+        }
+      }
+    }
+  },
+  "orderers": {
+    "orderer1.identity.com": {
+      "url": "orderer1.identity.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer1.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/identity.com/orderers/orderer1.identity.com/tls/ca.crt"
+      }
+    },
+    "orderer2.identity.com": {
+      "url": "orderer2.identity.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer2.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/identity.com/orderers/orderer2.identity.com/tls/ca.crt"
+      }
+    },
+    "orderer3.identity.com": {
+      "url": "orderer3.identity.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer3.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/identity.com/orderers/orderer3.identity.com/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer1.org1.identity.com": {
+      "url": "peer1.org1.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.org1.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org1.identity.com/peers/peer1.org1.identity.com/tls/ca.crt"
+      }
+    },
+    "peer2.org1.identity.com": {
+      "url": "peer2.org1.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.org1.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org1.identity.com/peers/peer2.org1.identity.com/tls/ca.crt"
+      }
+    },
+    "peer1.org2.identity.com": {
+      "url": "peer1.org2.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.org2.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org2.identity.com/peers/peer1.org2.identity.com/tls/ca.crt"
+      }
+    },
+    "peer2.org2.identity.com": {
+      "url": "peer2.org2.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.org2.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org2.identity.com/peers/peer2.org2.identity.com/tls/ca.crt"
+      }
+    },
+    "peer1.org3.identity.com": {
+      "url": "peer1.org3.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.org3.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org3.identity.com/peers/peer1.org3.identity.com/tls/ca.crt"
+      }
+    },
+    "peer2.org3.identity.com": {
+      "url": "peer2.org3.identity.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.org3.identity.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org3.identity.com/peers/peer2.org3.identity.com/tls/ca.crt"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.org1.identity.com": {
+      "url": "https://ca1.org1.identity.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org1.identity.com/ca/ca1.org1.identity.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.org2.identity.com": {
+      "url": "https://ca1.org2.identity.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org2.identity.com/ca/ca1.org2.identity.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.org3.identity.com": {
+      "url": "https://ca1.org3.identity.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/org3.identity.com/ca/ca1.org3.identity.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    }
+  }
+}

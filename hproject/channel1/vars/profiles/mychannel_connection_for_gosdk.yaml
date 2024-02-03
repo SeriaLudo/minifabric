@@ -1,0 +1,463 @@
+---
+# ROOTPATH should be set to the absolute path of crypto material starting directory
+# for example: export ROOTPATH=/home/ubuntu/mywork/vars/keyfiles
+"name": "network1"
+"x-type": "hlfv-2.4.0"
+"version": "1.0.0"
+"client":
+  "organization": "org3.digiprism.com"
+  "cryptoconfig":
+    "path": "${ROOTPATH}"
+  "connection":
+    "timeout":
+      "peer":
+        "endorser": "300"
+        "eventHub": "300"
+        "eventReg": "300"
+      "orderer": "300"
+  "credentialStore":
+    "path": "/tmp/state-store"
+    "cryptoStore":
+      "path": "/tmp/msp"
+  "BCCSP":
+    "security":
+      "enabled": "true"
+      "default":
+        "provider": "SW"
+      "hashAlgorithm": "SHA2"
+      "softVerify": "true"
+      "level": "256"
+
+"channels":
+  "mychannel":
+    "orderers":
+    - "orderer1.digiprism.com"
+    - "orderer2.digiprism.com"
+    - "orderer3.digiprism.com"
+    "peers":
+      "peer1.org1.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer2.org1.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.org2.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer2.org2.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.org3.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer2.org3.digiprism.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+
+"organizations":
+  "digiprism.com":
+    "mspid": "digiprism-com"
+    "cryptoPath": "ordererOrganizations/digiprism.com/users/{username}@digiprism.com/msp"
+    "orderers":
+    - "orderer1.digiprism.com"
+    - "orderer2.digiprism.com"
+    - "orderer3.digiprism.com"
+    "certificateAuthorities":
+  "org1.digiprism.com":
+    "mspid": "org1-digiprism-com"
+    "cryptoPath": "peerOrganizations/org1.digiprism.com/users/{username}@org1.digiprism.com/msp"
+    "peers":
+    - "peer1.org1.digiprism.com"
+    - "peer2.org1.digiprism.com"
+    "certificateAuthorities":
+    - "ca1.org1.digiprism.com"
+  "org2.digiprism.com":
+    "mspid": "org2-digiprism-com"
+    "cryptoPath": "peerOrganizations/org2.digiprism.com/users/{username}@org2.digiprism.com/msp"
+    "peers":
+    - "peer1.org2.digiprism.com"
+    - "peer2.org2.digiprism.com"
+    "certificateAuthorities":
+    - "ca1.org2.digiprism.com"
+  "org3.digiprism.com":
+    "mspid": "org3-digiprism-com"
+    "cryptoPath": "peerOrganizations/org3.digiprism.com/users/{username}@org3.digiprism.com/msp"
+    "peers":
+    - "peer1.org3.digiprism.com"
+    - "peer2.org3.digiprism.com"
+    "certificateAuthorities":
+    - "ca1.org3.digiprism.com"
+
+"orderers":
+  "orderer1.digiprism.com":
+    "url": "grpcs://192.168.86.33:7015"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer1.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrjCCAlSgAwIBAgIUEcs/2rdi8IEFi6Ake+/j/h6epkEwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMB4XDTIzMTIyNTAwMzkyN1oXDTMzMTIyMjAwMzkyN1ow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4393gmsV
+        AyP+6a70UivbfYrO7vssb5WlV2EJqg7nJp+C/v4yNluPmqfY1r1qdaMpjk1RI+DF
+        xpH2dv4258F7l6OBzzCBzDAdBgNVHQ4EFgQUivtuYBR8a0l0DqsO3u5mELGYomww
+        HwYDVR0jBBgwFoAUivtuYBR8a0l0DqsO3u5mELGYomwwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBMCoViGCE3Rsc2NhLmRpZ2lwcmlzbS5jb22CE3Rsc2NhLWRp
+        Z2lwcmlzbS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiEA
+        +jmeAkmySf2yjHYao97IR4kde93UpVfODchR3n4tACkCIHhJUcuzabSLIA/87S0g
+        fxlPPYOe8yXuOKh0ERDUrrN0
+        -----END CERTIFICATE-----
+
+  "orderer2.digiprism.com":
+    "url": "grpcs://192.168.86.33:7016"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer2.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrjCCAlSgAwIBAgIUEcs/2rdi8IEFi6Ake+/j/h6epkEwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMB4XDTIzMTIyNTAwMzkyN1oXDTMzMTIyMjAwMzkyN1ow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4393gmsV
+        AyP+6a70UivbfYrO7vssb5WlV2EJqg7nJp+C/v4yNluPmqfY1r1qdaMpjk1RI+DF
+        xpH2dv4258F7l6OBzzCBzDAdBgNVHQ4EFgQUivtuYBR8a0l0DqsO3u5mELGYomww
+        HwYDVR0jBBgwFoAUivtuYBR8a0l0DqsO3u5mELGYomwwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBMCoViGCE3Rsc2NhLmRpZ2lwcmlzbS5jb22CE3Rsc2NhLWRp
+        Z2lwcmlzbS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiEA
+        +jmeAkmySf2yjHYao97IR4kde93UpVfODchR3n4tACkCIHhJUcuzabSLIA/87S0g
+        fxlPPYOe8yXuOKh0ERDUrrN0
+        -----END CERTIFICATE-----
+
+  "orderer3.digiprism.com":
+    "url": "grpcs://192.168.86.33:7017"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer3.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrjCCAlSgAwIBAgIUEcs/2rdi8IEFi6Ake+/j/h6epkEwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMB4XDTIzMTIyNTAwMzkyN1oXDTMzMTIyMjAwMzkyN1ow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1kaWdpcHJpc20uY29tMRwwGgYDVQQDDBN0bHNj
+        YS5kaWdpcHJpc20uY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4393gmsV
+        AyP+6a70UivbfYrO7vssb5WlV2EJqg7nJp+C/v4yNluPmqfY1r1qdaMpjk1RI+DF
+        xpH2dv4258F7l6OBzzCBzDAdBgNVHQ4EFgQUivtuYBR8a0l0DqsO3u5mELGYomww
+        HwYDVR0jBBgwFoAUivtuYBR8a0l0DqsO3u5mELGYomwwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBMCoViGCE3Rsc2NhLmRpZ2lwcmlzbS5jb22CE3Rsc2NhLWRp
+        Z2lwcmlzbS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiEA
+        +jmeAkmySf2yjHYao97IR4kde93UpVfODchR3n4tACkCIHhJUcuzabSLIA/87S0g
+        fxlPPYOe8yXuOKh0ERDUrrN0
+        -----END CERTIFICATE-----
+
+"peers":
+  "peer1.org1.digiprism.com":
+    "url": "grpcs://192.168.86.33:7003"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.org1.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0DCCAnagAwIBAgIUL9QnSj8AqXs8OWobZFk6XcFR/yAwCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcxLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmcxLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDAzOTU2WhcNMzMx
+        MjIyMDAzOTU2WjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzEuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzEuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABNCrTTdXDaWPRVNAJNwEXXb5D8dZXslv+kgs75kYHDCa
+        Pw+lOBvX0yBjVvYHb5D+1AiTVtK3v6VaTaph/5f0O3mjgdswgdgwHQYDVR0OBBYE
+        FKeIJana8NEcDtG86vKBK16CgaedMB8GA1UdIwQYMBaAFKeIJana8NEcDtG86vKB
+        K16CgaedMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMS5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMS1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhANxGgjdXM99ON9N2stkf
+        MWbMQrF7zdSSHmBx3tLqFn0GAiBLXlCjRHeKrZc5/ls1+xk7qD2MyX+5HbXIfrPs
+        yWwYuA==
+        -----END CERTIFICATE-----
+
+  "peer2.org1.digiprism.com":
+    "url": "grpcs://192.168.86.33:7004"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.org1.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0DCCAnagAwIBAgIUL9QnSj8AqXs8OWobZFk6XcFR/yAwCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcxLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmcxLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDAzOTU2WhcNMzMx
+        MjIyMDAzOTU2WjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzEuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzEuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABNCrTTdXDaWPRVNAJNwEXXb5D8dZXslv+kgs75kYHDCa
+        Pw+lOBvX0yBjVvYHb5D+1AiTVtK3v6VaTaph/5f0O3mjgdswgdgwHQYDVR0OBBYE
+        FKeIJana8NEcDtG86vKBK16CgaedMB8GA1UdIwQYMBaAFKeIJana8NEcDtG86vKB
+        K16CgaedMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMS5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMS1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhANxGgjdXM99ON9N2stkf
+        MWbMQrF7zdSSHmBx3tLqFn0GAiBLXlCjRHeKrZc5/ls1+xk7qD2MyX+5HbXIfrPs
+        yWwYuA==
+        -----END CERTIFICATE-----
+
+  "peer1.org2.digiprism.com":
+    "url": "grpcs://192.168.86.33:7005"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.org2.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0TCCAnagAwIBAgIUUWZ1fFmuYTCu9WkleTNIkkxYRMowCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcyLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmcyLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDE5WhcNMzMx
+        MjIyMDA0MDE5WjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzIuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzIuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABP+wZQjMo2czqxw7MD+KqZoNtazkyqNGMgs5OrXJWB0V
+        OHbHdTUNZhQGH52N65pFcULWsBprcWElyu7h8Mqblr6jgdswgdgwHQYDVR0OBBYE
+        FBNb1CKXcpypVRmuwhPp+sjbQxEyMB8GA1UdIwQYMBaAFBNb1CKXcpypVRmuwhPp
+        +sjbQxEyMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMi5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMi1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSQAwRgIhAKMS+W+3QW2zpeC7LGVq
+        pbqBYLXP7+zSKDGkrfi7Xe/oAiEAnIxCO7FoIqwxChir8sau9dr2XThd3rL3hRg8
+        VltStTU=
+        -----END CERTIFICATE-----
+
+  "peer2.org2.digiprism.com":
+    "url": "grpcs://192.168.86.33:7006"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.org2.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0TCCAnagAwIBAgIUUWZ1fFmuYTCu9WkleTNIkkxYRMowCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcyLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmcyLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDE5WhcNMzMx
+        MjIyMDA0MDE5WjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzIuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzIuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABP+wZQjMo2czqxw7MD+KqZoNtazkyqNGMgs5OrXJWB0V
+        OHbHdTUNZhQGH52N65pFcULWsBprcWElyu7h8Mqblr6jgdswgdgwHQYDVR0OBBYE
+        FBNb1CKXcpypVRmuwhPp+sjbQxEyMB8GA1UdIwQYMBaAFBNb1CKXcpypVRmuwhPp
+        +sjbQxEyMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMi5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMi1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSQAwRgIhAKMS+W+3QW2zpeC7LGVq
+        pbqBYLXP7+zSKDGkrfi7Xe/oAiEAnIxCO7FoIqwxChir8sau9dr2XThd3rL3hRg8
+        VltStTU=
+        -----END CERTIFICATE-----
+
+  "peer1.org3.digiprism.com":
+    "url": "grpcs://192.168.86.33:7007"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.org3.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0DCCAnagAwIBAgIUHwuIIVxCqlBQik5We0ObYG0MqBYwCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmczLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmczLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDQzWhcNMzMx
+        MjIyMDA0MDQzWjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzMuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzMuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABDWCPExEywsVY1rT3TVVbeHHdJe4x06SwPcColN6CS32
+        wVm8TbTaDcZGj4DNhaqIQVDaJP4eZrLhkEooyIFFwwejgdswgdgwHQYDVR0OBBYE
+        FORrF8CmOAGjFhGVcUjhD8pU5UzlMB8GA1UdIwQYMBaAFORrF8CmOAGjFhGVcUjh
+        D8pU5UzlMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMy5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMy1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIgelUNidkpStRppYt3dtH3
+        JJJSbXdx96fZ94TXSTFBkQ4CIQCF91fTC6ZIjmThXQoVYqQYfWugN0h89gMJ5YZM
+        NpNjiA==
+        -----END CERTIFICATE-----
+
+  "peer2.org3.digiprism.com":
+    "url": "grpcs://192.168.86.33:7008"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.org3.digiprism.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC0DCCAnagAwIBAgIUHwuIIVxCqlBQik5We0ObYG0MqBYwCgYIKoZIzj0EAwIw
+        eTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmczLmRpZ2lwcmlzbS5jb20xIjAgBgNVBAMM
+        GXRsc2NhMS5vcmczLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDQzWhcNMzMx
+        MjIyMDA0MDQzWjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp
+        bmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzMuZGlnaXByaXNtLmNv
+        bTEiMCAGA1UEAwwZdGxzY2ExLm9yZzMuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49
+        AgEGCCqGSM49AwEHA0IABDWCPExEywsVY1rT3TVVbeHHdJe4x06SwPcColN6CS32
+        wVm8TbTaDcZGj4DNhaqIQVDaJP4eZrLhkEooyIFFwwejgdswgdgwHQYDVR0OBBYE
+        FORrF8CmOAGjFhGVcUjhD8pU5UzlMB8GA1UdIwQYMBaAFORrF8CmOAGjFhGVcUjh
+        D8pU5UzlMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW
+        MBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwTAqFYhghl0bHNjYTEu
+        b3JnMy5kaWdpcHJpc20uY29tghl0bHNjYTEtb3JnMy1kaWdpcHJpc20tY29tggls
+        b2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIgelUNidkpStRppYt3dtH3
+        JJJSbXdx96fZ94TXSTFBkQ4CIQCF91fTC6ZIjmThXQoVYqQYfWugN0h89gMJ5YZM
+        NpNjiA==
+        -----END CERTIFICATE-----
+
+"certificateAuthorities":
+  "ca1.org1.digiprism.com":
+    "url": "https://192.168.86.33:7000"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIICxDCCAmqgAwIBAgIULosJZxKVO9BwOtTzRj0w8PA02kQwCgYIKoZIzj0EAwIw
+        djELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcxLmRpZ2lwcmlzbS5jb20xHzAdBgNVBAMM
+        FmNhMS5vcmcxLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDAzOTU2WhcNMzMxMjIy
+        MDAzOTU2WjB2MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmEx
+        EDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzEuZGlnaXByaXNtLmNvbTEf
+        MB0GA1UEAwwWY2ExLm9yZzEuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49AgEGCCqG
+        SM49AwEHA0IABDlmrkEqM9ec0WmNbeSERpPWyA51qFsXjsXPmqa1r9g9XDU4HCFT
+        y4joA33DyFm9Fs+xTUVKezwR5F50ohm5GPOjgdUwgdIwHQYDVR0OBBYEFBFwpRT7
+        gmScR0o9BvvnaUR4MAWsMB8GA1UdIwQYMBaAFBFwpRT7gmScR0o9BvvnaUR4MAWs
+        MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsG
+        AQUFBwMBBggrBgEFBQcDAjBQBgNVHREESTBHhwTAqFYhghZjYTEub3JnMS5kaWdp
+        cHJpc20uY29tghZjYTEtb3JnMS1kaWdpcHJpc20tY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDSAAwRQIhALzpa8H4UjPF09+4SRZxGBobH+TD6XQ7mVFO
+        L0+RQkXNAiAqeYuTXl6jOaHwm5U9MGLZeN7c7zYPPAye3xgd3IGhuA==
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.org2.digiprism.com":
+    "url": "https://192.168.86.33:7001"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIICxDCCAmqgAwIBAgIUXAOfzabokaojxzruq+Gm4SSde+gwCgYIKoZIzj0EAwIw
+        djELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmcyLmRpZ2lwcmlzbS5jb20xHzAdBgNVBAMM
+        FmNhMS5vcmcyLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDE5WhcNMzMxMjIy
+        MDA0MDE5WjB2MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmEx
+        EDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzIuZGlnaXByaXNtLmNvbTEf
+        MB0GA1UEAwwWY2ExLm9yZzIuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49AgEGCCqG
+        SM49AwEHA0IABIOfdb0PO3TDmbVICROfC/sLpVhTaAFFPCXo4auhRI1lI3aLsRmk
+        FrAEwOvKLlkn7x53lEjTrjjyHHLcP9L2T3KjgdUwgdIwHQYDVR0OBBYEFO3zQALl
+        gZmMkaa/vNvnB8v+gxGHMB8GA1UdIwQYMBaAFO3zQALlgZmMkaa/vNvnB8v+gxGH
+        MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsG
+        AQUFBwMBBggrBgEFBQcDAjBQBgNVHREESTBHhwTAqFYhghZjYTEub3JnMi5kaWdp
+        cHJpc20uY29tghZjYTEtb3JnMi1kaWdpcHJpc20tY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDSAAwRQIgKo8wiDszbuBj7OvApXzhIvX3KHlerYWwGpZE
+        rcw7Yj0CIQChbyd3y7pPInEUGSb3UpbZkPZbzjW9sJXVfQAUj4TzdA==
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.org3.digiprism.com":
+    "url": "https://192.168.86.33:7002"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIICwzCCAmqgAwIBAgIUU8VE3B9Ew8qFI6/FjIZKe1gDskEwCgYIKoZIzj0EAwIw
+        djELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRswGQYDVQQKDBJvcmczLmRpZ2lwcmlzbS5jb20xHzAdBgNVBAMM
+        FmNhMS5vcmczLmRpZ2lwcmlzbS5jb20wHhcNMjMxMjI1MDA0MDQyWhcNMzMxMjIy
+        MDA0MDQyWjB2MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmEx
+        EDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEm9yZzMuZGlnaXByaXNtLmNvbTEf
+        MB0GA1UEAwwWY2ExLm9yZzMuZGlnaXByaXNtLmNvbTBZMBMGByqGSM49AgEGCCqG
+        SM49AwEHA0IABHXMRRqv0ScsB7XJ8e8GvK12mGT74nE1eol92y7Ta0qT9CEnHznd
+        bkLgveDOWDNSnMYCrkHBEEkguCgc03X6QC2jgdUwgdIwHQYDVR0OBBYEFGbfy191
+        NJ3G4crDzsTHBP3sUtORMB8GA1UdIwQYMBaAFGbfy191NJ3G4crDzsTHBP3sUtOR
+        MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsG
+        AQUFBwMBBggrBgEFBQcDAjBQBgNVHREESTBHhwTAqFYhghZjYTEub3JnMy5kaWdp
+        cHJpc20uY29tghZjYTEtb3JnMy1kaWdpcHJpc20tY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDRwAwRAIgHUsVbQhUOI8kEsViR1uz5HGiY7eHrbHQR180
+        VlkvMyQCIEa6lz4PzkSSADnGZ997u9j5i6JaWog562Sfr2YYZDI3
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+
+"entityMatchers":
+  "orderer":
+  - "mappedHost": "orderer1.digiprism.com"
+    "pattern": "(\\w*)orderer1.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer1.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7015"
+  - "mappedHost": "orderer2.digiprism.com"
+    "pattern": "(\\w*)orderer2.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer2.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7016"
+  - "mappedHost": "orderer3.digiprism.com"
+    "pattern": "(\\w*)orderer3.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer3.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7017"
+  
+  "peer":
+  - "mappedHost": "peer1.org1.digiprism.com"
+    "pattern": "(\\w*)peer1.org1.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.org1.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7003"
+  - "mappedHost": "peer2.org1.digiprism.com"
+    "pattern": "(\\w*)peer2.org1.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer2.org1.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7004"
+  - "mappedHost": "peer1.org2.digiprism.com"
+    "pattern": "(\\w*)peer1.org2.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.org2.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7005"
+  - "mappedHost": "peer2.org2.digiprism.com"
+    "pattern": "(\\w*)peer2.org2.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer2.org2.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7006"
+  - "mappedHost": "peer1.org3.digiprism.com"
+    "pattern": "(\\w*)peer1.org3.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.org3.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7007"
+  - "mappedHost": "peer2.org3.digiprism.com"
+    "pattern": "(\\w*)peer2.org3.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer2.org3.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7008"
+  
+  "certificateAuthorities":
+  - "mappedHost": "ca1.org1.digiprism.com"
+    "pattern": "(\\w*)ca1.org1.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.org1.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7000"
+  - "mappedHost": "ca1.org2.digiprism.com"
+    "pattern": "(\\w*)ca1.org2.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.org2.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7001"
+  - "mappedHost": "ca1.org3.digiprism.com"
+    "pattern": "(\\w*)ca1.org3.digiprism.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.org3.digiprism.com"
+    "urlSubstitutionExp": "192.168.86.33:7002"

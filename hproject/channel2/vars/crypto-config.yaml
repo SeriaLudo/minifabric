@@ -1,0 +1,70 @@
+---
+OrdererOrgs:
+  - Name: identity.com
+    Domain: identity.com
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - orderer1.identity.com
+      - Hostname: orderer2
+        SANS:
+          - orderer2.identity.com
+      - Hostname: orderer3
+        SANS:
+          - orderer3.identity.com
+
+PeerOrgs:
+  - Name: org1.identity.com
+    Domain: org1.identity.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.org1.identity.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.org1.identity.com
+        SANS:
+          - peer1.org1.identity.com
+      - Hostname: peer2
+        CommonName: peer2.org1.identity.com
+        SANS:
+          - peer2.org1.identity.com
+  - Name: org2.identity.com
+    Domain: org2.identity.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.org2.identity.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.org2.identity.com
+        SANS:
+          - peer1.org2.identity.com
+      - Hostname: peer2
+        CommonName: peer2.org2.identity.com
+        SANS:
+          - peer2.org2.identity.com
+  - Name: org3.identity.com
+    Domain: org3.identity.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.org3.identity.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.org3.identity.com
+        SANS:
+          - peer1.org3.identity.com
+      - Hostname: peer2
+        CommonName: peer2.org3.identity.com
+        SANS:
+          - peer2.org3.identity.com

@@ -1,0 +1,9 @@
+{
+  "network-configs": {
+    "network2": {
+      "name": "network2",
+      "profile": "./connection-profile/mychannel_profile.json"
+    }
+  },
+  "license": "Apache-2.0"
+}

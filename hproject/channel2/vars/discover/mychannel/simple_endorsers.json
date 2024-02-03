@@ -1,0 +1,55 @@
+{
+  "Chaincode": "simple",
+  "EndorsersByGroups": {
+    "G0": [
+      {
+        "MSPID": "org3-identity-com",
+        "Endpoint": "peer1.org3.identity.com:7051"
+      },
+      {
+        "MSPID": "org3-identity-com",
+        "Endpoint": "peer2.org3.identity.com:7051"
+      }
+    ],
+    "G1": [
+      {
+        "MSPID": "org1-identity-com",
+        "Endpoint": "peer1.org1.identity.com:7051"
+      },
+      {
+        "MSPID": "org1-identity-com",
+        "Endpoint": "peer2.org1.identity.com:7051"
+      }
+    ],
+    "G2": [
+      {
+        "MSPID": "org2-identity-com",
+        "Endpoint": "peer2.org2.identity.com:7051"
+      },
+      {
+        "MSPID": "org2-identity-com",
+        "Endpoint": "peer1.org2.identity.com:7051"
+      }
+    ]
+  },
+  "Layouts": [
+    {
+      "quantities_by_group": {
+        "G0": 1,
+        "G1": 1
+      }
+    },
+    {
+      "quantities_by_group": {
+        "G0": 1,
+        "G2": 1
+      }
+    },
+    {
+      "quantities_by_group": {
+        "G1": 1,
+        "G2": 1
+      }
+    }
+  ]
+}
