@@ -23,9 +23,9 @@ async function main() {
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const identity = await wallet.get('appUser2');
+        const identity = await wallet.get('appUser3');
         if (!identity) {
-            console.log('An identity for the user "appUser2" does not exist in the wallet');
+            console.log('An identity for the user "appUser3" does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
@@ -33,7 +33,7 @@ async function main() {
 	
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(ccp, { wallet, identity: 'appUser2', discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(ccp, { wallet, identity: 'appUser3', discovery: { enabled: true, asLocalhost: true } });
         //console.log("gateway connected")
 
         // Get the network (channel) our contract is deployed to.
