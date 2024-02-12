@@ -2,22 +2,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const fetchBackend=async()=>{
+    console.log("button-click")
+    let data=await fetch("http://192.168.86.33:8080/api/readMarble/marble5005", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    console.log(data.json());
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      hello world!
+      <div>
+        <button onClick={fetchBackend}>
+          click for back-end
+        </button>
+      </div>
+    
     </div>
   );
 }
