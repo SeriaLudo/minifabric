@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const os = require('os');
 const app = express();
 app.use(bodyParser.json());
+//const localtunnel = require("localtunnel");
+
+let requestCount = 0;
+let rpm = 0;
 
 // Setting for Hyperledger Fabric
 const { Wallets, Gateway } = require('fabric-network');
@@ -292,4 +297,53 @@ app.post('/api/deleteMarble/', async function (req, res) {
     }
 });
 
-app.listen(8080);
+// Middleware to log request timestamps and count requests
+app.use((req, res, next) => {
+    req.startTime = Date.now();
+    requestCount++;
+    next();
+});
+
+// Route handling
+app.get('/api/data', (req, res) => {
+    // Simulate processing time
+    setTimeout(() => {
+        res.send({ message: 'Data received' });
+    }, 1000);
+});
+
+// Custom endpoint to expose performance metrics
+app.get('/api/metrics', (req, res) => {
+    const latency = Date.now() - req.startTime;
+    const cpuUsage = os.loadavg()[0].toFixed(2); // 1-minute CPU load average
+    const memoryUsage = process.memoryUsage().rss / 1024 / 1024; // Resident Set Size (RSS) in MB
+
+    const metrics = {
+        latency: `${latency}ms`,
+        cpuUsage: `${cpuUsage}%`,
+        memoryUsage: `${memoryUsage.toFixed(2)}MB`,
+        rpm: rpm
+    };
+
+    res.json(metrics);
+});
+
+// Periodically update RPM
+setInterval(() => {
+    rpm = requestCount;
+    requestCount = 0;
+}, 60000); // Update RPM every minute
+
+//(async () => {
+//	const tunnel = await localtunnel({ port: 8082 });
+//	console.log(tunnel.url);
+//})();
+
+// Start the server on port 8082
+const PORT = process.env.PORT || 8082;
+app.listen(PORT, '192.168.86.33', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+
+//app.listen(8082);

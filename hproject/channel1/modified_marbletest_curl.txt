@@ -1,0 +1,3 @@
+curl -d '{"name":"marble5005","city":"Helensburgh","dob":"19121973","age":"51","postcode":"QG081RU","owner":"Lydia","address":"67AbbeyRoad","passport":"680314158","ni":"YU040757N","creditscore":"802"}' -H "Content-Type: application/json" -X POST http://192.168.86.33:8080/api/initMarble
+curl -d '{"name":"marble5006","city":"Cardigan","dob":"28121982","age":"42","postcode":"EN049XQ","owner":"Lila","address":"45MolyneuxStreet","passport":"880202309","ni":"PJ041312R","creditscore":"971"}' -H "Content-Type: application/json" -X POST http://192.168.86.33:8080/api/initMarble
+
