@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 
 let requestCount = 0;
 let rpm = 0;
+let totalLatency =0;
 
 // Setting for Hyperledger Fabric
 const { Wallets, Gateway } = require('fabric-network');
@@ -301,6 +302,11 @@ app.post('/api/deleteMarble/', async function (req, res) {
 app.use((req, res, next) => {
     req.startTime = Date.now();
     requestCount++;
+    res.on('finish', () => {
+        const latency = Date.now() - req.startTime;
+        console.log(`Request latency: ${latency}ms`);
+        totalLatency += latency;
+    });
     next();
 });
 
@@ -319,7 +325,7 @@ app.get('/api/metrics', (req, res) => {
     const memoryUsage = process.memoryUsage().rss / 1024 / 1024; // Resident Set Size (RSS) in MB
 
     const metrics = {
-        latency: `${latency}ms`,
+        latency: `${(totalLatency / requestCount).toFixed(2)}ms`, // Average latency
         cpuUsage: `${cpuUsage}%`,
         memoryUsage: `${memoryUsage.toFixed(2)}MB`,
         rpm: rpm
@@ -332,6 +338,7 @@ app.get('/api/metrics', (req, res) => {
 setInterval(() => {
     rpm = requestCount;
     requestCount = 0;
+    totalLatency = 0; // Reset total latency for the new minute
 }, 60000); // Update RPM every minute
 
 //(async () => {
@@ -340,8 +347,8 @@ setInterval(() => {
 //})();
 
 // Start the server on port 8082
-const PORT = process.env.PORT || 8082;
-app.listen(PORT, '192.168.86.33', () => {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, 'localhost', () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
