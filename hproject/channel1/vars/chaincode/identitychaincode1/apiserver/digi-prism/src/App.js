@@ -148,6 +148,17 @@ function App() {
         <div className="split-container">
           {/* Left column */}
           <div className="left-column">
+          
+  {/* ------------------------------------------------------------------ */ } 
+   
+   <div className="navbar">
+      <button className="navbar-button">User1</button>
+      <button className="navbar-button">User2</button>
+      <button className="navbar-button">User3</button>
+    </div>        
+          
+          
+          
 {/* ------------------------------------------------------------------ */ }  
    
     <div>
@@ -312,6 +323,8 @@ function App() {
   </div>
   </div>
    </div>  
+   
+     
   {/* ------------------------------------------------------------------ */ } 
            
       </header>

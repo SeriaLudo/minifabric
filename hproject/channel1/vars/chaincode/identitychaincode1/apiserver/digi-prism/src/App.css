@@ -50,3 +50,28 @@
   width: 45%; /* Adjust width as needed */
 }
 
+.navbar {
+  background-color: #333; /* Background color for the navbar */
+  overflow: hidden; /* Clear floats */
+  position: fixed; /* Position the navbar */
+  top: 0; /* Position at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.navbar-button {
+  background-color: #007bff; /* Blue background color for buttons */
+  color: white; /* White text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Display as inline-block */
+  cursor: pointer; /* Cursor style */
+  border-radius: 5px; /* Rounded corners */
+  margin: 5px; /* Margin between buttons */
+}
+
+.navbar-button:hover {
+  background-color: #0056b3; /* Darker blue background color on hover */
+}
+
