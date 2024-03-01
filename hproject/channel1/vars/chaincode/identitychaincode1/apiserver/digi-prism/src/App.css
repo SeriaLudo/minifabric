@@ -1,3 +1,7 @@
+.App-container {
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -13,14 +17,20 @@
   }
 }
 
+.App-body {
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family:'Roboto', sans-serif;
   color: white;
 }
 
@@ -40,10 +50,12 @@
 .split-container {
   display: flex;
   justify-content: space-between;
+ 
 }
 
 .left-column {
   width: 45%; /* Adjust width as needed */
+  flex-direction: column;
 }
 
 .right-column {
@@ -51,7 +63,7 @@
 }
 
 .navbar {
-  background-color: #333; /* Background color for the navbar */
+  background-color: #bdc4cf; /* Background color for the navbar */
   overflow: hidden; /* Clear floats */
   position: fixed; /* Position the navbar */
   top: 0; /* Position at the top of the page */
@@ -62,8 +74,9 @@
   background-color: #007bff; /* Blue background color for buttons */
   color: white; /* White text color */
   border: none; /* No border */
-  padding: 10px 20px; /* Padding */
+  padding: 10px 50px; /* Padding */
   text-align: center; /* Center text */
+  font-size:20px;
   text-decoration: none; /* No underline */
   display: inline-block; /* Display as inline-block */
   cursor: pointer; /* Cursor style */
