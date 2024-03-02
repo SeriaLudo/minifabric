@@ -59,7 +59,7 @@ app.get('/api/getMarblesByRange/:start_key/:end_key', async function (req, res) 
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
         res.status(500).json({error: error});
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -104,7 +104,7 @@ app.get('/api/readMarble/:name', async function (req, res) {
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
         res.status(500).json({error: error});
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -148,7 +148,7 @@ app.get('/api/readMarblePrivateDetails/:name', async function (req, res) {
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
         res.status(500).json({error: error});
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -197,7 +197,7 @@ app.post('/api/initMarble/', async function (req, res) {
 
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -245,7 +245,7 @@ app.post('/api/transferMarble/', async function (req, res) {
 
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -294,7 +294,7 @@ app.post('/api/deleteMarble/', async function (req, res) {
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
         res.status(500).json({error: error});
-        process.exit(1);
+        //process.exit(1);
     }
 });
 
@@ -346,8 +346,8 @@ setInterval(() => {
 //	console.log(tunnel.url);
 //})();
 
-// Start the server on port 8082
-const PORT = process.env.PORT || 8080;
+// Start the server on port 8080
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, 'localhost', () => {
     console.log(`Server is running on port ${PORT}`);
 });

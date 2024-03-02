@@ -1,0 +1,88 @@
+.App-container {
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-body {
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.App-header {
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family:'Roboto', sans-serif;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*
+.split-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column {
+  width: 45%; 
+}
+
+.right-column {
+  width: 45%; 
+}
+*/
+.navbar {
+  background-color: #bdc4cf; /* Background color for the navbar */
+  overflow: hidden; /* Clear floats */
+  position: fixed; /* Position the navbar */
+  top: 0; /* Position at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.navbar-button {
+  background-color: #007bff; /* Blue background color for buttons */
+  color: white; /* White text color */
+  border: none; /* No border */
+  padding: 10px 50px; /* Padding */
+  text-align: center; /* Center text */
+  font-size:20px;
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Display as inline-block */
+  cursor: pointer; /* Cursor style */
+  border-radius: 5px; /* Rounded corners */
+  margin: 5px; /* Margin between buttons */
+}
+
+.navbar-button:hover {
+  background-color: #0056b3; /* Darker blue background color on hover */
+}
+
