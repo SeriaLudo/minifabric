@@ -2,6 +2,7 @@ import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
+import MarbleDataDisplay from "./MarbleDataDisplay";
 
 function App() {
   const [readMarbledata, setreadMarbleData] = React.useState('');
@@ -15,7 +16,7 @@ function App() {
   const [readMarblePrivateDetailsdata, setreadMarblePrivateDetailsData] = React.useState('');
   
   
-  const [getMarblesByRangedata, setgetMarblesByRangeData] = React.useState('');
+  const [getMarblesByRangeData, setgetMarblesByRangeData] = React.useState('');
   const [marbleNameRange1, setmarbleNameRange1] = React.useState('');
   const [marbleNameRange2, setmarbleNameRange2] = React.useState(''); 
   
@@ -212,13 +213,19 @@ function App() {
     <button style={{ backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={getMarblesByRange}>getMarblesByRange</button>
   </div>
   
-  {getMarblesByRangedata && (
+  {/* {getMarblesByRangedata && (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
       <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em' }}>
         Response: {getMarblesByRangedata}
       </div>
     </div>
-  )}
+  )} */}
+
+   {/* Map over the getMarblesByRangeData and display with imported MarbleDataDisplay component. Data is an array of objects containing Key and Record. It's Record that contains the data we want. and we can use Record.name as key */}
+
+   {getMarblesByRangeData && getMarblesByRangeData.map((marble, index) => {
+      return <MarbleDataDisplay key={marble.Key} marbleName={marble.Key} marbleData={marble.Record} />;
+    })}
 </div>
 
   </div>
