@@ -2,60 +2,34 @@ import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
-import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-
-  const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
-    useAuth0();
-    
   const [readMarbledata, setreadMarbleData] = React.useState('');
   const [marbleName, setmarbleName] = React.useState('');
   
-  const [deleteMarbledata, setdeleteMarbleData] = React.useState('');
-  const [deletemarbleName, setdeletemarbleName] = React.useState('');
+  //const [deleteMarbledata, setdeleteMarbleData] = React.useState('');
+  //const [deletemarbleName, setdeletemarbleName] = React.useState('');
   
-  const [readMarblePrivateDetailsdata, setreadMarblePrivateDetailsData] = React.useState('');
+  
+  
+ const [readMarblePrivateDetailsdata, setreadMarblePrivateDetailsData] = React.useState('');
   
   
   const [getMarblesByRangedata, setgetMarblesByRangeData] = React.useState('');
   const [marbleNameRange1, setmarbleNameRange1] = React.useState('');
   const [marbleNameRange2, setmarbleNameRange2] = React.useState(''); 
   
-  const [initMarbleformData, setinitMarbleFormData] = React.useState({});
-  const [initMarbleResponse, setinitMarbleResponse] = React.useState('');
+  //const [initMarbleformData, setinitMarbleFormData] = React.useState({});
+  //const [initMarbleResponse, setinitMarbleResponse] = React.useState('');
   
-   const [transferMarbleformData, settransferMarbleFormData] = React.useState({});
-  const [transferMarbleResponse, settransferMarbleResponse] = React.useState('');
+  //const [transferMarbleformData, settransferMarbleFormData] = React.useState({});
+  //const [transferMarbleResponse, settransferMarbleResponse] = React.useState('');
   
-{/*
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Oops... {error.message}</div>;
-  }
-
-  if (isAuthenticated) {
-    return (
-      <div>
-        Hello {user.name}{' '}
-        console.log('username:'{user.name})
-        <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-          Log out
-        </button>
-      </div>
-    );
-  } else {
-    return <button onClick={() => loginWithRedirect()}>Log in</button>;
-  }
-
-  */}
   
  {/* ------------------------------------------------------------------ */ }  
  
     const getreadMarble = () => {
-    fetch(`/api/readMarble/${marbleName}`)
+    fetch(`/api/readMarble/marble${marbleName}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch data');
@@ -66,10 +40,8 @@ function App() {
         if (data.Error) {
           throw new Error(data.Error);
         }
-        var responseData = data.response;
-        delete responseData.name;
-        delete responseData.docType;
-        setreadMarbleData(responseData);
+        
+        setreadMarbleData(data.response);
       })
       .catch((error) => {
         console.error('Error fetching marble data:', error.message);
@@ -81,7 +53,7 @@ function App() {
       });
 };
   
-{/* ------------------------------------------------------------------ */ }  
+{/* ------------------------------------------------------------------   
     const getdeleteMarble = async () => {
         try {
             if (!deletemarbleName.trim()) {
@@ -97,38 +69,54 @@ function App() {
             console.error('Error deleting marble:', error);
             setdeleteMarbleData('Error deleting marble');
         }
-    };
+    }; */ }
   
- {/* ------------------------------------------------------------------ */ } 
+ {/* ------------------------------------------------------------------  */ }
   
     const getreadMarblePrivateDetails = () => {
-    fetch(`/api/readMarblePrivateDetails/${marbleName}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch data');
+  fetch(`/api/readMarblePrivateDetails/marble${marbleName}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Failed to fetch data: User do not have permission to access the private data');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data.Error) {
+        // Check for specific error message
+        if (data.Error.includes('creator does not have read access permission')) {
+          // Handle the specific error message
+          throw new Error('User do not have permission to access the private data');
         }
-        return res.json();
-      })
-      .then((data) => {
-        if (data.Error) {
-          throw new Error(data.Error);
-        }
-        setreadMarblePrivateDetailsData(data.response);
-      })
-      .catch((error) => {
-        console.error('Error fetching marble private details:', error.message);
-        if (error.message.includes('Marble does not exist')) {
-          setreadMarbleData('Marble does not exist');
-        } else {
-          setreadMarbleData('Failed to fetch data');
-        }
-      });
+        // Handle other errors
+        throw new Error(data.Error);
+      }
+      setreadMarblePrivateDetailsData(data.response);
+    })
+    .catch((error) => {
+      console.error('Error fetching marble private details:', error);
+      // Display appropriate message based on error
+      if (error.message === 'You do not have permission to access the private data') {
+        // Handle specific error message
+        setreadMarbleData('You do not have permission to access the private data');
+      } else if (error.message === 'Marble does not exist') {
+        // Handle marble not found error
+        setreadMarbleData('Marble does not exist');
+      } else {
+        // Handle other errors
+        setreadMarbleData('Failed to fetch data:User do not have permission to access the private data');
+      }
+    });
 };
+
   
   
   
   const getMarblesByRange = () => {
-    fetch(`/api/getMarblesByRange/${marbleNameRange1}/${marbleNameRange2}`)
+    const url = (`/api/getMarblesByRange/marble${marbleNameRange1}/marble${marbleNameRange2}`)
+     //console.log("Fetching data from:", url);
+     
+     fetch(url)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch data');
@@ -140,19 +128,15 @@ function App() {
       })
       .catch((error) => {
         console.error('Error fetching marbles by range:', error);
-        // Handle error state or display error message as needed
+        
       });
 };
 
-  
+ {/* ------------------------------------------------------------------ 
   
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setinitMarbleFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-    settransferMarbleFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
@@ -174,10 +158,17 @@ function App() {
         setinitMarbleResponse('');
       });
   };
+   */ }
+   
+   {/* ------------------------------------------------------------------ 
   
-  
-  
-  
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    settransferMarbleFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
     
   const transferMarble = (e) => {
     e.preventDefault();
@@ -195,24 +186,24 @@ function App() {
         settransferMarbleResponse('');
       });
   };
- 
- {/* ------------------------------------------------------------------ */ } 
-  {/* ------------------------------------------------------------------ */ }
+   
+   */ } 
+   
+ {/* ------------------------------------------------------------------ */}  
   
   return (
     <div className="App">
       <header className="App-header">
-      <div className="App-container">
-        <div className="split-container">
-          {/* Left column */}
-          <div className="left-column">
+      {/*  <div className="split-container">
+          
+          <div className="left-column"> */ }
           
   {/* ------------------------------------------------------------------ */ } 
    
-   <div className="navbar">
+       <div className="navbar">
       <button className="navbar-button"><strong>Digi-PRISM</strong></button>
       
-    </div>        
+    </div>     
           
           
           
@@ -232,21 +223,34 @@ function App() {
   </div>
 
   {readMarbledata && (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-      <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em' }}>
-        Response: {readMarbledata}
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', fontSize: '20px' }}>
+      <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em' }}><br />
+        <strong>Read Marble Data:</strong> <br /> 
+        Age: {JSON.parse(readMarbledata).age},<br />
+        City: {JSON.parse(readMarbledata).city},<br />
+        DOB: {JSON.parse(readMarbledata).dob},<br />
+        Owner: {JSON.parse(readMarbledata).owner},<br />
+        Postcode: {JSON.parse(readMarbledata).postcode}
       </div>
     </div>
   )}
 
+<br />
+
   {readMarblePrivateDetailsdata && (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', fontSize: '20px' }}>
       <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em' }}>
-        Response: {readMarblePrivateDetailsdata}
+        <strong>Read Marble Private Details Data:</strong> <br /> 
+        Address: {JSON.parse(readMarblePrivateDetailsdata).address},<br />
+        CreditScore: {JSON.parse(readMarblePrivateDetailsdata).creditscore},<br />
+        NI: {JSON.parse(readMarblePrivateDetailsdata).ni},<br />
+        Passport: {JSON.parse(readMarblePrivateDetailsdata).passport}
       </div>
     </div>
   )}
 </div>
+
+<br />
 
     
 {/* ------------------------------------------------------------------ */ }
@@ -260,7 +264,7 @@ function App() {
         id="marbleNameRange1"
         value={marbleNameRange1}
         onChange={e => setmarbleNameRange1(e.target.value)}
-        style={{ padding: '8px', borderRadius: '5px', border: '1px solid #ccc', width: '200px' }}
+        style={{ padding: '6px', borderRadius: '5px', border: '1px solid #ccc', width: '200px' }}
       />
     </div>
     
@@ -271,7 +275,8 @@ function App() {
         id="marbleNameRange2"
         value={marbleNameRange2}
         onChange={e => setmarbleNameRange2(e.target.value)}
-        style={{ padding: '8px', borderRadius: '5px', border: '1px solid #ccc', width: '200px' }}
+        
+        style={{ padding: '6px', borderRadius: '5px', border: '1px solid #ccc', width: '200px' }}
       />
     </div>
   </div>
@@ -279,21 +284,35 @@ function App() {
   <div style={{ textAlign: 'center' }}>
     <button style={{ backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={getMarblesByRange}>getMarblesByRange</button>
   </div>
-  
+   
   {getMarblesByRangedata && (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-      <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', marginBottom: '20px', fontSize: '20px' }}>
+      <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: 'white', color: 'black', padding: '10px', border: 'none', borderRadius: '5px', fontSize: '0.5em', alignFont: 'right' }}>
+        <strong>Read Marble Private Details Data:</strong> <br />
+                
         Response: {getMarblesByRangedata}
+       
       </div>
+      
     </div>
   )}
-   <br />
 </div>
 
+  
+
+ {/* ------------------------------------------------------------------ */ }
  
-  
-  
-   {/* ------------------------------------------------------------------ */ } 
+
+ 
+ <br />
+ 
+ 
+{/* ------------------------------------------------------------------ */ }
+  {/* Right column 
+      <div className="right-column"> */}
+ 
+ 
+{/* ------------------------------------------------------------------ 
   
   
       <form onSubmit={transferMarble} style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px', margin: 'auto' }}>
@@ -308,26 +327,26 @@ function App() {
   </label>
 
   
-  <button type="submit" style={{ marginTop: '10px', backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>ChangeName</button>
+  <button type="submit" style={{ marginTop: '10px', backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>SubmitRecord</button>
 </form>
 
 
 
 {transferMarbleResponse && (
-<div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: '#000000', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>
-  
-    <p style={{ fontSize: '14px', margin: '0', color: 'white' }}>Response: {transferMarbleResponse}</p>
+<div style={{ maxWidth: '500px', overflowWrap: 'break-word',  padding: '10px', borderRadius: '5px', marginTop: '10px'  }}>
+      <p style={{ fontSize: '14px', margin: '0', color: 'white', textAlign: 'right' }}>Response: {transferMarbleResponse}</p>
   </div>
   
-)}
+)} 
+*/ } 
 
-</div>
-     
 {/* ------------------------------------------------------------------ */ }
-  {/* Right column */}
-      <div className="right-column"> 
+
+  
+  
+  
    
-   
+ {/*  
       <form onSubmit={initMarble} style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px', margin: 'auto' }}>
   <label style={{ fontSize: '14px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between' }}>
     <input type="text" name="name" value={initMarbleformData.name || ''} onChange={handleFormChange} style={{ padding: '5px', borderRadius: '5px', border: '1px solid #ccc', flex: '1' }} />
@@ -370,29 +389,29 @@ function App() {
     <span>Credit Score:</span>
   </label>
   
-  <button type="submit" style={{ marginTop: '10px', backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>CreateRecord</button>
+  <button type="submit" style={{ marginTop: '10px', backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>SubmitRecord</button>
 </form>
 
 
-{/* Display the response */}
+{/* Display the response 
 {initMarbleResponse && (
 <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: '#000000', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>
   
-    <p style={{ fontSize: '14px', margin: '0', color: 'white' }}>Response: {initMarbleResponse}</p>
+    <p style={{ margin: '0', color: '#333' }}>Response: {initMarbleResponse}</p>
   </div>
   
-)}
+)} */ }
 
 
 {/* ------------------------------------------------------------------ */ }
 
 
 
-
+{/*
 
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '500px', margin: 'auto' }}>
   <div style={{ marginBottom: '10px', textAlign: 'center' }}>
-    <label htmlFor="deletemarbleName" style={{ fontSize: '14px', marginBottom: '5px', display: 'block' }}><br />Delete Marble Name:</label>
+    <label htmlFor="deletemarbleName" style={{ fontSize: '14px', marginBottom: '5px', display: 'block' }}>Delete Marble Name:</label>
     <input
       type="text"
       id="deletemarbleName"
@@ -401,24 +420,20 @@ function App() {
       style={{ padding: '8px', borderRadius: '5px', border: '1px solid #ccc', width: '100%' }}
     />
   </div>
-  <button onClick={getdeleteMarble} style={{ backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '10px' }}> Delete Marble</button>
+  <button onClick={getdeleteMarble} style={{ backgroundColor: '#007bff', color: 'white', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '10px' }}>Delete Marble</button>
   {deleteMarbledata && (
-    <div style={{ maxWidth: '500px', overflowWrap: 'break-word',  padding: '10px', borderRadius: '5px', marginTop: '10px'  }}>
-      <p style={{ fontSize: '14px', margin: '0', color: 'white' }}>Response: {deleteMarbledata}</p>
+    <div style={{ maxWidth: '500px', overflowWrap: 'break-word', backgroundColor: "darkolivegreen", padding: '10px', borderRadius: '5px', marginTop: '10px'  }}>
+      <p style={{ margin: '0', color: '#333' }}>Response: {deleteMarbledata}</p>
       </div>
     
   )}
-  </div>
-  </div>
-   </div>  
+  </div> */ }
+  
+     
    
      
   {/* ------------------------------------------------------------------ */ } 
-  
- 
-
-{/* ------------------------------------------------------------------ */ }
-        </div>   
+           
       </header>
     </div>
   );
